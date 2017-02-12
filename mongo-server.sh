@@ -12,14 +12,10 @@ fi
 
 if [ "$?" -eq "0" ]; then
     echo "¡ SERVIDOR YA INICIADO !"
-    exit 0
 else
     mongod  --fork --logpath data/mongo/log/messages.log --smallfiles --oplogSize 50 --port 27001 --dbpath data/mongo 
     echo "INICIANDO SERVIDOR ... " 
 fi
-
-exit 0
-
 
 _MyIP="$( ip route get 8.8.8.8 | awk 'NR==1 {print $NF}' )"
 if [ "A$_MyIP" == "A" ]
