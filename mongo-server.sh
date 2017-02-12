@@ -1,8 +1,6 @@
 #!/bin/bash
-if [ -d data ];
+if ! [ -d data ];
 then
-
-else
 echo "Carpeta DATA, no existe"
     mkdir data
     mkdir data/mongo
