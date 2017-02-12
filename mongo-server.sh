@@ -11,7 +11,8 @@ fi
 
 `ps -A | grep -q '[m]ongod'`
 
-if [ "$?" -eq "0" ]; then
+if [ "$?" -eq "0" ]; 
+then
     echo "¡ SERVIDOR YA INICIADO !"
 else
     mongod  --fork --logpath data/mongo/log/messages.log --smallfiles --oplogSize 50 --port 27001 --dbpath data/mongo 
