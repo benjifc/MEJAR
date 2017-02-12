@@ -1,4 +1,5 @@
 #!/bin/bash
+clear
 if ! [ -d data ];
 then
 echo "Carpeta DATA, no existe"
