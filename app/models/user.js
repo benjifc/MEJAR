@@ -13,13 +13,11 @@ const UserSchema = new mongoose.Schema({
     firstName: {
     type: String,
     lowercase: true,
-    unique: true,
     required: true
   },
     lastName: {
     type: String,
     lowercase: true,
-    unique: true,
     required: true
   },
   password: {
@@ -42,6 +40,7 @@ const UserSchema = new mongoose.Schema({
 
 UserSchema.pre('save', function (next) {
   const user = this;
+  if (user.username == "") user.username = user.email;
   if (this.isModified('password') || this.isNew) {
     bcrypt.genSalt(10, function (err, salt) {
       if (err) {

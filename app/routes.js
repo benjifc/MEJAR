@@ -31,6 +31,9 @@ module.exports = function(app) {
       res.status(400).json({ success: false, message: 'Please enter email and password.' });
     } else {
       const newUser = new User({
+        username: req.body.username,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         email: req.body.email,
         password: req.body.password
       });
