@@ -8,17 +8,27 @@ echo "Carpeta DATA, no existe"
 echo "Creada carpeta DATA"
 fi
 
+`ps -A | grep -q '[m]ongod'`
+
+if [ "$?" -eq "0" ]; then
+    echo "¡ SERVIDOR YA INICIADO !"
+    exit 0
+else
+    mongod  --fork --logpath data/mongo/log/messages.log --smallfiles --oplogSize 50 --port 27001 --dbpath data/mongo 
+    echo "INICIANDO SERVIDOR ... " 
+fi
+
+exit 0
 
 
-mongod  --fork --logpath data/mongo/log/messages.log --smallfiles --oplogSize 50 --port 27001 --dbpath data/mongo 
 _MyIP="$( ip route get 8.8.8.8 | awk 'NR==1 {print $NF}' )"
 if [ "A$_MyIP" == "A" ]
 then
     _MyIPs="$( hostname -I )"
     for _MyIP in "$_MyIPs"
     do
-        echo "SERVIDOR INICIADO: \"$_MyIP\""
+        echo "SERVIDOR INICIADO EN IP : \"$_MyIP\" : 27001 "
     done
 else
-    echo "SERVIDOR INICIADO IP: $_MyIP : 27001"
+    echo "SERVIDOR INICIADO EN IP: $_MyIP : 27001"
 fi
