@@ -25,7 +25,7 @@ module.exports = function(app) {
   const apiRoutes = express.Router();
 
   // Registrar un nuevo usuario
-  apiRoutes.post('/register', function(req, res) {
+/*  apiRoutes.post('/register', function(req, res) {
     console.log(req.body);
     if(!req.body.email || !req.body.password) {
       res.status(400).json({ success: false, message: 'Please enter email and password.' });
@@ -46,14 +46,15 @@ module.exports = function(app) {
         res.status(201).json({ success: true, message: 'Successfully created new user.' });
       });
     }
-  });
+  });*/
 
   // Autenticar usuario y cojer el json web token para incluirlo en el HEADER con la clave Authorization
    
-  apiRoutes.post('/authenticate', function(req, res) {
-    User.findOne({
-      email: req.body.email
-    }, function(err, user) {
+  apiRoutes.post('/login', function(req, res) {
+    console.log("Authenticate: " +req.body.username);
+    User.findOne({$or:[{
+      email: req.body.username //{'username':1, '_id':1,'password':0,'email':1,'firstName':1,'lasName':1,'role':1},
+    },{username: req.body.username}]},function(err, user) {
       if (err) throw err;
 
       if (!user) {
@@ -63,6 +64,7 @@ module.exports = function(app) {
         user.comparePassword(req.body.password, function(err, isMatch) {
           if (isMatch && !err) {
             // Crear  token si el passwor se encontró 
+            user.password=null;
             const token = jwt.sign(user, config.secret, {
               expiresIn: 10080 // en segundos
             });
@@ -75,66 +77,16 @@ module.exports = function(app) {
     });
   });
 
-  /******************************/
-  /*        EJEMPLO CHAT        */
-  /******************************/
 
-  // Rutas protegidas con JWT
-  //Cojer los mensajes de los usuarios autentificados
-  
-  apiRoutes.get('/chat', requireAuth, function(req, res) {
-    Chat.find({$or : [{'to': req.user._id}, {'from': req.user._id}]}, function(err, messages) {
-      if (err)
-        res.status(400).send(err);
+ 
+  apiRoutes.get('/authenticated', requireAuth, function(req, res, next) {
+            res.json({"authenticated": true});
 
-      res.status(400).json(messages);
     });
-  });
 
-  // POST Crea un mensaje el usuario autentificado
-  apiRoutes.post('/chat', requireAuth, function(req, res) {
-    const chat = new Chat();
-        chat.from = req.user._id;
-        chat.to = req.body.to;
-        chat.message_body = req.body.message_body;
 
-        // salvar mensaje si no hay error
-        chat.save(function(err) {
-            if (err)
-                res.status(400).send(err);
-
-            res.status(201).json({ message: 'Message sent!' });
-        });
-  });
-
-  // PUT Modificar un mensaje de un usuario autentificado
-  apiRoutes.put('/chat/:message_id', requireAuth, function(req, res) {
-    Chat.findOne({$and : [{'_id': req.params.message_id}, {'from': req.user._id}]}, function(err, message) {
-      if (err)
-        res.send(err);
-
-      message.message_body = req.body.message_body;
-
-      // Guardar el mensaje modificado
-      message.save(function(err) {
-        if (err)
-          res.send(err);
-
-        res.json({ message: 'Message edited!' });
-      });
-    });
-  });
-
-  // DELETE Borrar un mensaje
-  apiRoutes.delete('/chat/:message_id', requireAuth, function(req, res) {
-    Chat.findOneAndRemove({$and : [{'_id': req.params.message_id}, {'from': req.user._id}]}, function(err) {
-      if (err)
-        res.send(err);
-
-      res.json({ message: 'Message removed!' });
-    });
-  });
-
+  require("./user/chat/chat.js");
   // Poner el las rutas agupadas
-  app.use('/api', apiRoutes);
+  app.use('/authorize', apiRoutes);
 };
+

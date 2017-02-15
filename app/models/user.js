@@ -30,11 +30,14 @@ const UserSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
-  role: {
-    type: String,
-    enum: ['Client', 'Manager', 'Admin'],
-    default: 'Client'
-  }
+
+  role:
+           {
+            type: String,
+            enum: ['Client', 'Manager', 'Admin'],
+            default: 'Client'
+          }
+        
 });
 
 
