@@ -5,14 +5,14 @@ This excel file contains a project in VBA code, for usual support tasks, such as
 
 ## Folders definitions
 
-    - **VBAProjectFiles**
-        Root VBA Project's folder and documents files, this files is a Sheets' VBA codes or Workbook's VBA codes. 
-        * **CLS**
-            Class files
-        * **FOMS**
-            Forms files
-        * **MODULES**
-            Modules files
+- **VBAProjectFiles**
+Root VBA Project's folder and documents files, this files is a Sheets' VBA codes or Workbook's VBA codes. 
+- **CLS**
+  Class files
+- **FOMS**
+  Forms files
+- **MODULES**
+  Modules files
 
 ## Files definitions
 ### CLS' Files
