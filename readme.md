@@ -6,8 +6,8 @@ This excel file contains a project in VBA code, for usual support tasks, such as
 ## :file_folder: Folders definitions
 
 - **VBAProjectFiles**
-Root VBA Project's folder and documents files, this files is a Sheets' VBA codes or Workbook's VBA codes. 
-- **CLS**  Class files
+> Root VBA Project's folder and documents files, this files is a Sheets' VBA codes or Workbook's VBA codes. 
+- **CLS**  > Class files
 - **FOMS**  Forms files
 - **MODULES**  Modules files
 
