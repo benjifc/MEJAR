@@ -4,14 +4,10 @@
 -[Folders definitions](#file_folder-folders-definitions)
 
 -[Files definitions](#page_facing_up-files-definitions)
-
- -[Class](cls-files)
-
- -[Forms](forms-files)
- 
- -[Modules](modules-files)
- 
- -[Documents](documents-files)
+ -[Class](#cls-files)
+ -[Forms](#forms-files)
+ -[Modules](#modules-files)
+ -[Documents](#documents-files)
 
 
 This excel file contains a project in VBA code, for usual support tasks, such as creating users, changing password, deleting users ...
