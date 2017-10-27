@@ -1,7 +1,13 @@
 # HPQH OPERATIONS SPOURTS USERS TOOL
-## INDEX DOCUMENT
+## :bookmark_tabs: INDEX DOCUMENT
+
 -[Folders definitions](#file_folder-folders-definitions)
--[Files definitions](#](#page-facing-up-files-definitions))
+
+-[Files definitions](#](#page_facing_up-files-definitions)
+ -[Class](CLS'-Files)
+ -[Forms](Forms'-Files)
+ -[Modules](Modules'-Files)
+ -[Documents](Documents'-Files)
 
 
 This excel file contains a project in VBA code, for usual support tasks, such as creating users, changing password, deleting users ...
@@ -62,6 +68,21 @@ This excel file contains a project in VBA code, for usual support tasks, such as
  - **Utils.bas** 
  > Utils, like as Short list ... 
 
+### Documents' Files
+ - Sheet_Account_Changer_Password
+ > Code's sheet by Acount change password
+ - Sheet_Account_Create
+ > Code's Sheet by Account create
+ - Sheet_Account_Delete
+ > Code's Sheet by Account delete
+ - Sheet_Account_Invalid_Password
+ > Code's sheet by list user with invalid password
+ - Sheet_Comunicate
+ > Code's sheet by send emails
+ - Sheet_User
+ > Code's sheet by list users
+ - ThisWorkbook
+ > Code workbook by login in open event
 
 
         
