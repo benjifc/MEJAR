@@ -4,10 +4,14 @@
 -[Folders definitions](#file_folder-folders-definitions)
 
 -[Files definitions](#](#page_facing_up-files-definitions)
- -[Class](CLS'-Files)
- -[Forms](Forms'-Files)
- -[Modules](Modules'-Files)
- -[Documents](Documents'-Files)
+
+ -[Class](cls-files)
+
+ -[Forms](forms-files)
+ 
+ -[Modules](modules-files)
+ 
+ -[Documents](documents-files)
 
 
 This excel file contains a project in VBA code, for usual support tasks, such as creating users, changing password, deleting users ...
@@ -24,7 +28,7 @@ This excel file contains a project in VBA code, for usual support tasks, such as
 > Modules files
 
 ## :page_facing_up: Files definitions
-### CLS' Files
+### CLS Files
 
  - **clsHPQC.cls**
  - **clsAdminTask.cls** 
@@ -40,7 +44,7 @@ This excel file contains a project in VBA code, for usual support tasks, such as
  - **clsLock.cls** 
  > This file is a lock interface class 
     
-### Forms' Files
+### Forms Files
  - **frmMail.frm** 
  > Windows Form user iterfaces for sending emails
  - **frmMail.frx** 
@@ -58,7 +62,7 @@ This excel file contains a project in VBA code, for usual support tasks, such as
  - **frmWait.frx** 
  > Visual Basic Binary
 
-### Modules' Files
+### Modules Files
  - **Callers.bas** 
  > Callers Methods  
  - **Communications.bas** 
@@ -68,7 +72,7 @@ This excel file contains a project in VBA code, for usual support tasks, such as
  - **Utils.bas** 
  > Utils, like as Short list ... 
 
-### Documents' Files
+### Documents Files
  - Sheet_Account_Changer_Password
  > Code's sheet by Acount change password
  - Sheet_Account_Create
